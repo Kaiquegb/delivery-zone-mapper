@@ -40,6 +40,35 @@ def count_navigable_zones(grid: Grid) -> int:
     return len(_find_all_zones(grid))
 
 
+def label_zones(grid: Grid) -> Tuple[List[List[int]], int]:
+    """
+    Rotula cada célula navegável com o identificador da zona conectada a que
+    pertence. Obstáculos recebem rótulo -1.
+
+    Decisão de arquitetura: esta função reaproveita a mesma lógica de flood
+    fill usada em `count_navigable_zones`, mas devolve também o mapeamento
+    célula -> zona. Isso permite ao restante do projeto (veja delivery.py)
+    responder "restaurante e cliente estão na mesma zona?" em O(1) após um
+    único pré-processamento em O(linhas * colunas) — em vez de rodar uma
+    busca completa a cada consulta de conectividade.
+
+    Returns:
+        (label_grid, numero_de_zonas)
+    """
+    if not grid or not grid[0]:
+        return [], 0
+
+    rows, cols = len(grid), len(grid[0])
+    label_grid = [[-1] * cols for _ in range(rows)]
+
+    zones = _find_all_zones(grid)
+    for zone_id, zone in enumerate(zones):
+        for (r, c) in zone:
+            label_grid[r][c] = zone_id
+
+    return label_grid, len(zones)
+
+
 def _find_all_zones(grid: Grid) -> List[Set[Coordinate]]:
     """Retorna a lista de zonas do mapa, cada uma como um conjunto de coordenadas."""
     if not grid or not grid[0]:
