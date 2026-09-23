@@ -1,3 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "delivery-zone-mapper"
+version = "0.1.0"
+description = "Cálculo de zonas de entrega e rota mais curta (DFS + BFS) em um mapa simplificado de cidade."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Seu Nome" }]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
