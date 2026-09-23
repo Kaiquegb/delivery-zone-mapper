@@ -1,6 +1,4 @@
-# 🗺️ Delivery Zone Mapper
-
-![Testes](https://github.com/SEU-USUARIO/delivery-zone-mapper/actions/workflows/tests.yml/badge.svg)
+# Delivery Zone Mapper
 
 Cálculo de zonas de entrega navegáveis e da rota mais curta entre um
 restaurante e um cliente, num mapa simplificado de cidade — usando **DFS**
@@ -15,7 +13,7 @@ a mais curta?
 
 ![Exemplo de rota calculada](assets/example_route.png)
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - Contagem de zonas navegáveis num mapa binário (`bitmap_holes.py`)
 - Rotulagem de zonas conectadas para checagens de conectividade em O(1) (`label_zones`)
@@ -25,7 +23,7 @@ a mais curta?
 - Visualização web interativa em HTML/CSS/JS puro (`frontend/`)
 - Suíte de testes automatizados com `pytest` + CI no GitHub Actions
 
-## 📦 Estrutura do projeto
+## Estrutura do projeto
 
 ```
 delivery-zone-mapper/
@@ -41,7 +39,7 @@ delivery-zone-mapper/
 └── assets/                     # imagens geradas para este README
 ```
 
-## ▶️ Como rodar
+## Como rodar
 
 ```bash
 git clone https://github.com/SEU-USUARIO/delivery-zone-mapper.git
@@ -59,7 +57,7 @@ Para a visualização web, basta abrir `frontend/index.html` em qualquer
 navegador — não depende de servidor nem do Python (o algoritmo foi
 reescrito em JavaScript puro só para essa demo).
 
-## 🧠 Decisões de Arquitetura
+## Decisões de Arquitetura
 
 **DFS iterativa (com pilha explícita) em vez de recursiva, no `bitmap_holes.py`.**
 Uma DFS recursiva usaria a pilha de chamadas do próprio Python, que tem um
@@ -120,7 +118,7 @@ tamanho, centralizar isso num módulo à parte seria over-engineering; se o
 projeto crescesse — mais tipos de célula, pesos nas arestas, múltiplos
 veículos — esse seria o primeiro refactor a fazer.
 
-## 🧪 Testes
+## Testes
 
 ```bash
 pytest -v
