@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Zone Mapper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Delivery Zone Mapper</h1>
+    <p>Visualização do algoritmo de busca em largura (BFS) sobre um mapa de zonas de entrega.</p>
+  </header>
+
+  <nav class="toolbar" aria-label="Ferramentas do mapa">
+    <div class="toolbar-group" role="group" aria-label="Modo de edição do mapa">
+      <button type="button" class="tool" data-mode="obstacle" aria-pressed="true">Obstáculo</button>
+      <button type="button" class="tool" data-mode="restaurant" aria-pressed="false">Restaurante</button>
+      <button type="button" class="tool" data-mode="client" aria-pressed="false">Cliente</button>
+    </div>
+    <div class="toolbar-group">
+      <button type="button" id="btn-random">Mapa aleatório</button>
+      <button type="button" id="btn-clear">Limpar</button>
+      <button type="button" id="btn-run" class="primary">Calcular rota</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="map-section" aria-label="Mapa da cidade">
+      <div id="grid" class="grid" role="grid" aria-label="Grade do mapa"></div>
+    </section>
+
+    <aside class="side-panel" aria-label="Legenda e status">
+      <div class="panel-block">
+        <h2>Legenda</h2>
+        <ul class="legend">
+          <li><span class="swatch restaurant"></span>Restaurante (A)</li>
+          <li><span class="swatch client"></span>Cliente (B)</li>
+          <li><span class="swatch obstacle"></span>Obstáculo</li>
+          <li><span class="swatch visited"></span>Visitado pela BFS</li>
+          <li><span class="swatch path"></span>Rota mais curta</li>
+        </ul>
+      </div>
+
+      <div class="panel-block">
+        <h2>Status</h2>
+        <p id="status" class="status" role="status" aria-live="polite">
+          Clique num modo acima e depois numa célula do mapa para editar.
+        </p>
+        <dl class="stats">
+          <div>
+            <dt>Distância</dt>
+            <dd id="stat-distance">—</dd>
+          </div>
+          <div>
+            <dt>Células visitadas</dt>
+            <dd id="stat-visited">—</dd>
+          </div>
+        </dl>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      Algoritmo em Python (<code>src/delivery_zone_mapper/</code>), reescrito aqui em JavaScript puro
+      para uma demonstração 100% estática, sem servidor.
+      <a href="https://github.com/SEU-USUARIO/delivery-zone-mapper" target="_blank" rel="noopener">Código no GitHub</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
